@@ -24,7 +24,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // Fetch extension settings
-var parentExtensionId = 'lbeflkohppahphcnpjfgffckhcmgelfo';
+var parentExtensionId = 'nlcklobeoigfjmcigmhbjkepmniladed';
 var settings = {};
 var port = chrome.extension.connect(parentExtensionId);
 
