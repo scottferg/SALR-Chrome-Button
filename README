@@ -1,0 +1,6 @@
+Something Awful Last Read Button Extension for Chrome
+
+This adds a browser action button to the users toolbar, augmenting the functionality
+of the SALR extension for Chrome.  If this extension is installed, it will disable
+the page action button in the omnibar for SALR.  This extension will not work
+without SALR installed.
