@@ -45,12 +45,16 @@ port.postMessage({
  */
 function openTab(tabUrl) {
     var button = event.button;
-    if(button > 1)
+    if (button > 1)
         return;
-    var selected = true;
-    if(button == 1 || event.ctrlKey) // Middle Button or Ctrl click
-        selected = false;
-    chrome.tabs.create({ url: tabUrl, selected: selected });
+    if (button == 1 || event.ctrlKey) // Middle Button or Ctrl click
+        chrome.tabs.create({ url: tabUrl, selected: false });
+    else if (button == 0) { // Left click
+        chrome.tabs.getSelected(null, function (tab) {
+            chrome.tabs.update(tab.id, {url: tabUrl});
+            window.close();
+        });
+    }
 }
 
 /**
