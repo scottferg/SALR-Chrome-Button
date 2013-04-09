@@ -25,19 +25,29 @@
 
 // Fetch extension settings
 var parentExtensionId = 'nlcklobeoigfjmcigmhbjkepmniladed';
+var parentExtensionIdNew = 'bogegdelcjhoaakaepmoglademmhiboo';
+
 var settings = {};
-var port = chrome.extension.connect(parentExtensionId);
 
-port.onMessage.addListener(function(data) {
-    settings = data;
-
-    console.log(settings);
+chrome.management.get(parentExtensionIdNew, function(data) {
+    if(data != undefined && data.enabled == true) {
+        var port = chrome.extension.connect(parentExtensionIdNew)
+    }
+    else {
+        var port = chrome.extension.connect(parentExtensionId);
+    }
     
-    populateMenu();    
-});
+    port.onMessage.addListener(function(data) {
+        settings = data;
 
-port.postMessage({
-    'message': 'GetForumsJumpList'
+        console.log(settings);
+        
+        populateMenu();    
+    });
+
+    port.postMessage({
+        'message': 'GetForumsJumpList'
+    });    
 });
 
 /**
